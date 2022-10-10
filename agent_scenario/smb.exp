@@ -1,0 +1,36 @@
+#!/usr/bin/expect -f
+
+set SERVER_IP [lindex $argv 0];
+
+# Expect boilerplate
+set force_conservative 0 
+if {$force_conservative} {
+    set send_slow {1 .1}
+    proc send {ignore arg} {
+        sleep .1
+        exp_send -s -- $arg
+    }
+}
+
+# Do not timeout on commands
+set timeout -1
+
+# Connect to target over SMB
+spawn python3
+expect "> "
+send -- "import pty\n"
+expect "> "
+# Expect uses [] square braces for command substitution, so we need to escape them
+send "pty.spawn(\['smbclient', '-N', '//$SERVER_IP/ipc$'\])\n"
+
+
+# Wait for the input prompt and send commands
+expect "> "
+send -- "dir\n"
+
+# Loop the commands
+while { 1 == 1 } {
+    expect "> "
+    sleep 1
+    send -- "dir\n"
+}

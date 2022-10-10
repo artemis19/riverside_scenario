@@ -1,0 +1,235 @@
+version: "3.9"
+services:
+
+    agent1:
+        image: viz_agent
+        hostname: EMAIL01
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - CALLBACK_ONE=true
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.101
+    
+            external:
+                ipv4_address: 153.17.52.101
+    
+
+    agent2:
+        image: viz_agent
+        hostname: WS02
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - CALLBACK_TWO=true
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.102
+    
+
+    agent3:
+        image: viz_agent
+        hostname: WS03
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - CALLBACK_THREE=true
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.103
+    
+
+    agent4:
+        image: viz_agent
+        hostname: FILE01
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - CALLBACK_FOUR=true
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.104
+    
+
+    agent5:
+        image: viz_agent
+        hostname: WS01
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.105
+    
+
+    agent6:
+        image: viz_agent
+        hostname: WS04
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.106
+    
+
+    agent7:
+        image: viz_agent
+        hostname: WS05
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.107
+    
+
+    agent8:
+        image: viz_agent
+        hostname: WEB01
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=linux
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.108
+    
+
+    agent9:
+        image: viz_agent
+        hostname: WS06
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.109
+    
+
+    agent10:
+        image: viz_agent
+        hostname: WS07
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.110
+    
+
+    agent11:
+        image: viz_agent
+        hostname: DEV01
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=linux
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.111
+    
+
+    agent12:
+        image: viz_agent
+        hostname: DEV02
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=linux
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.112
+    
+
+    agent13:
+        image: viz_agent
+        hostname: WS08
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.113
+    
+
+    agent14:
+        image: viz_agent
+        hostname: WS09
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.114
+    
+
+    agent15:
+        image: viz_agent
+        hostname: DC01
+        environment:
+          - VIZSERVER=172.17.0.1:1533
+          - OS=windows
+        entrypoint: bash -c "head /dev/urandom | sha256sum > /var/lib/dbus/machine-id; cat /var/lib/dbus/machine-id; /.docker-entrypoint.sh"
+        networks:
+            viz:
+                ipv4_address: 10.10.10.115
+    
+
+    remote1:
+        image: remote_host
+        hostname: remote_node1
+        environment:
+            - RDPATTACK=true
+            # - DONOTHING=true
+        networks:
+            external:
+                ipv4_address: 153.17.52.201
+
+    remote2:
+        image: remote_host
+        hostname: remote_node2
+        environment:
+            # - RDPATTACK=true
+            - DONOTHING=true
+        networks:
+            external:
+                ipv4_address: 153.62.14.109
+
+
+    remote3:
+        image: remote_host
+        hostname: remote_node3
+        environment:
+            # - RDPATTACK=true
+            - DONOTHING=true
+        networks:
+            external:
+                ipv4_address: 153.89.194.75
+    
+
+networks:
+  viz:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.10.0/24
+          gateway: 10.10.10.1
+  external:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 153.17.52.0/6
+          gateway: 153.17.52.1

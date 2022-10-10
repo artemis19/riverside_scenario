@@ -1,0 +1,39 @@
+#!/usr/bin/expect -f
+
+# Expect will interact with interactive prompts/programs based on scripted commands
+
+set SERVER_IP [lindex $argv 0];
+
+# Expect boilerplate
+set force_conservative 0
+if {$force_conservative} {
+	set send_slow {1 .1}
+	proc send {ignore arg} {
+		sleep .1
+		exp_send -s -- $arg
+	}	
+}
+
+# Do not timeout on commands
+set timeout -1
+
+# Start session
+spawn ftp $SERVER_IP
+
+# Wait for login prompt and send a username
+expect "): "
+sleep 1
+send -- "anonymous\r"
+
+# Wait for the password prompt & send something
+sleep 1
+expect "Password: "
+send -- "\r"
+sleep 1
+
+# Loop retreiving data
+while { 1 == 1 } {
+	expect "ftp> "
+	send -- "dir\r"
+	sleep 1
+}
