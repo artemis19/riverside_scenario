@@ -3,13 +3,13 @@
 # Define protocols, domains, and ftp servers to use
 
 PROTOCOLS=(
-	"HTTP"
-	"SSL"
-	"FTP"
-	"DNS"
+    "HTTP"
+    "SSL"
+    "FTP"
+    "DNS"
     "ICMP"
-	"TCP"
-	"UDP"
+    "TCP"
+    "UDP"
 )
 
 DOMAINS=(
@@ -173,41 +173,41 @@ FTP_SERVERS=(
 ## Define traffic generator functions
 
 function random(){
-	local RINDEX
-	list=${@}
-	size=${#@}
-	RINDEX=$(($RANDOM % $size))
-	echo $RINDEX
+    local RINDEX
+    list=${@}
+    size=${#@}
+    RINDEX=$(($RANDOM % $size))
+    echo $RINDEX
 }
 
 function random_protocol(){
-	RINDEX=$(random "${PROTOCOLS[@]}")
-	echo ${PROTOCOLS[RINDEX]}
+    RINDEX=$(random "${PROTOCOLS[@]}")
+    echo ${PROTOCOLS[RINDEX]}
 }
 
 function random_http_url(){
-	RINDEX=$(random "${DOMAINS[@]}")
-	echo "http://${DOMAINS[RINDEX]}"
+    RINDEX=$(random "${DOMAINS[@]}")
+    echo "http://${DOMAINS[RINDEX]}"
 }
 
 function random_https_url(){
-	RINDEX=$(random "${DOMAINS[@]}")
-	echo "https://${DOMAINS[RINDEX]}"
+    RINDEX=$(random "${DOMAINS[@]}")
+    echo "https://${DOMAINS[RINDEX]}"
 }
 
 function random_ftp_server(){
-	RINDEX=$(random "${FTP_SERVERS[@]}")
-	echo "${FTP_SERVERS[RINDEX]}"
+    RINDEX=$(random "${FTP_SERVERS[@]}")
+    echo "${FTP_SERVERS[RINDEX]}"
 }
 
 function random_domain(){
-	RINDEX=$(random "${DOMAINS[@]}")
-	echo "${DOMAINS[RINDEX]}"
+    RINDEX=$(random "${DOMAINS[@]}")
+    echo "${DOMAINS[RINDEX]}"
 }
 
 TIMEOUT_TIME="5s"
 JITTER_TIME="5"
-MAX_NUM_OF_OPS="5"
+MAX_NUM_OF_OPS="3"
 
 function do_random_traffic(){
 
@@ -266,8 +266,8 @@ while [ 1 ]; do
         do_random_traffic &
     done
 
-	SLEEP=$(($RANDOM % $JITTER_TIME))
-	echo "Done, sleeping for ${SLEEP} seconds..."
+    SLEEP=$(($RANDOM % $JITTER_TIME))
+    echo "Done, sleeping for ${SLEEP} seconds..."
 
-	sleep ${SLEEP}
+    sleep ${SLEEP}
 done
